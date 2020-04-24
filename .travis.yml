@@ -1,0 +1,10 @@
+sudo: required
+services: 
+    - docker
+language: generic 
+
+before_install:
+    - docker build -t volodymyrfalendysh/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true volodymyrfalendysh/docker-react npm run test
